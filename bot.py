@@ -43,4 +43,4 @@ def run_discord_bot():
             await send_message(message,user_message,is_private=False)
 
 
-    client.run("MTE3NDQ0NjcyOTg2MTUzMzc1Nw.G_7lsi.kaGIR9pFgfu1mzAfRgjHSbL3XK4gh6R_VGxvp4")
+    client.run(os.environ['TOKEN'])
