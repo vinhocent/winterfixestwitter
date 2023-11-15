@@ -4,7 +4,7 @@ import responses
 
 async def send_message(message,user_message,is_private):
     try:
-        response = responses.handle_response(user_message)
+        response = responses.handle_response(user_message,message.author)
         if (response != None):
             await message.delete()
             await message.author.send(response) if is_private else await message.channel.send(response)
