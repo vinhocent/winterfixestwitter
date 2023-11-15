@@ -6,7 +6,7 @@ async def send_message(message,user_message,is_private):
     try:
         response = responses.handle_response(user_message)
         if (response != None):
-            message.delete()
+            await message.delete()
             await message.author.send(response) if is_private else await message.channel.send(response)
     except Exception as e:
         print(e)
@@ -43,4 +43,4 @@ def run_discord_bot():
             await send_message(message,user_message,is_private=False)
 
 
-    client.run(os.environ['TOKEN'])
+    client.run("MTE3NDQ0NjcyOTg2MTUzMzc1Nw.G_7lsi.kaGIR9pFgfu1mzAfRgjHSbL3XK4gh6R_VGxvp4")
