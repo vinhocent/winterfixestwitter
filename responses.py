@@ -12,3 +12,5 @@ def handle_response(message, author) -> str:
     
     if message == "!winter":
         return "I'm Winter byum blum buh"
+    if message == "!saranghae":
+        return "Saranghae!"
