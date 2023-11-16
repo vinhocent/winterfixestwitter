@@ -18,9 +18,12 @@ def run_discord_bot():
     intents.message_content = True
     client = discord.Client(intents=intents)
 
+
+
     @client.event
     async def on_ready():
         print(f'{client.user} is now running!')
+        client.change_presence(activity=discord.Activity(type=discord.ActivityType.streaming, name="Aespa - Drama", url = "https://open.spotify.com/track/5XWlyfo0kZ8LF7VSyfS4Ew?si=b686e4664c5c432a"))
 
 
     @client.event
