@@ -25,7 +25,7 @@
 
 # Overview
 
-WinterFixesTwitter is a bot named after Aespa's very own Kim Min Jeong (aka Winter). I made thsi bot because I was sick and tired of copying and pasting twitter links and editing it to have `fxtwitter` instead of `x` or `twitter`. So this just does that process automatically - nothing really much other than that!
+WinterFixesTwitter is a bot named after Aespa's very own Kim Min Jeong (aka Winter). I made this bot because I was sick and tired of copying and pasting twitter links and editing it to have `fxtwitter` instead of `x` or `twitter`. So this just does that process automatically - nothing really much other than that!
 
 # Installation
 Feel free to fork this repo and deploy it!
