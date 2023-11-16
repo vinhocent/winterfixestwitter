@@ -30,5 +30,10 @@ WinterFixesTwitter is a bot named after Aespa's very own Kim Min Jeong (aka Wint
 # Installation
 Feel free to fork this repo and deploy it!
 
+Run this bot locally but replacing `TOKEN` with your own token and running:
+```
+python main.py
+```
+
 # License
 Released under the [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html) license.
