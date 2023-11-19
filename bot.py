@@ -1,4 +1,6 @@
 import discord
+from discord import app_commands
+
 import os
 import responses
 
@@ -17,14 +19,20 @@ def run_discord_bot():
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
-
-
+    tree = app_commands.CommandTree(client)
+    @tree.command(name = "commandname", description = "My first application Command", guild=discord.Object(id=12417128931)) #Add the guild ids in which the slash command will appear. If it should be in all, remove the argument, but note that it will take some time (up to an hour) to register the command if it's for all guilds.
+    async def first_command(interaction):
+        await interaction.response.send_message("Hello!")
 
     @client.event
     async def on_ready():
         print(f'{client.user} is now running!')
         # await client.change_presence(activity=discord.Activity(type=discord.ActivityType.streaming, name="Aespa - Drama", url = "https://open.spotify.com/track/5XWlyfo0kZ8LF7VSyfS4Ew?si=b686e4664c5c432a"))
         await client.change_presence(activity=discord.Streaming(name='Aespa - Drama', url='https://www.twitch.tv/tenz'))
+        await tree.sync(guild=discord.Object(id=Your guild id))
+        print("Ready!")
+
+
 
     @client.event
     async def on_message(message):
@@ -44,6 +52,8 @@ def run_discord_bot():
             await send_message(message,user_message,is_private=True)
         else:
             await send_message(message,user_message,is_private=False)
+
+
 
 
     client.run(os.environ['TOKEN'])
