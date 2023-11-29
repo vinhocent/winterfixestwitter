@@ -17,7 +17,7 @@ async def addRemoveSink(message, user : discord.Member):
   role = get(user.guild.roles, name="sink")
   if role.position >= user.top_role.position: #if the role is above users top role it sends error
     return await message.channel.send('**:x: | That role is above your top role!**') 
-  if role in user.roles:
+  elif role in user.roles:
       await user.remove_roles(role) #removes the role if user already has
       await message.channel.send(f"Removed {role} from {user.mention}")
   else:
