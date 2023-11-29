@@ -57,7 +57,7 @@ def run_discord_bot():
             
             return
         # print(f"{username} said: '{user_message}' ({channel})")
-        elif user_message == "?sink":
+        elif user_message == "!sink":
             await addRemoveSink(message,message.author)
         elif user_message[0] == '?':
             user_message=user_message[1:]
