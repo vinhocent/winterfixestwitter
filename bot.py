@@ -14,7 +14,7 @@ async def send_message(message,user_message,is_private):
         print(e)
         
 async def addRemoveSink(message, user : discord.Member):
-  role = get(user.server.roles, name="sink")
+  role = get(user.guild.roles, name="sink")
   if role.position > user.top_role.position: #if the role is above users top role it sends error
     return await message.author.send('**:x: | That role is above your top role!**') 
   if role in user.roles:
