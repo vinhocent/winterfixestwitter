@@ -14,16 +14,18 @@ async def send_message(message,user_message,is_private):
         print(e)
         
 async def addRemoveSink(message, user : discord.Member):
-  role = get(user.guild.roles, name="sink")
-  if role.position >= user.top_role.position: #if the role is above users top role it sends error
-    return await message.channel.send('**:x: | That role is above your top role!**') 
-  elif role in user.roles:
-      await user.remove_roles(role) #removes the role if user already has
-      await message.channel.send(f"Removed {role} from {user.mention}")
-  else:
-      await user.add_roles(role) #adds role if not already has it
-      await message.channel.send(f"Added {role} to {user.mention}") 
-
+    try:
+        role = get(user.guild.roles, name="sink")
+        if role.position >= user.top_role.position: #if the role is above users top role it sends error
+            return await message.channel.send('**:x: | That role is above your top role!**') 
+        elif role in user.roles:
+            await user.remove_roles(role) #removes the role if user already has
+            await message.channel.send(f"Removed {role} from {user.mention}")
+        else:
+            await user.add_roles(role) #adds role if not already has it
+            await message.channel.send(f"Added {role} to {user.mention}") 
+    except Exception as e:
+        print(e)
 def run_discord_bot():
     
     intents = discord.Intents.default()
