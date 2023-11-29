@@ -1,6 +1,6 @@
 import discord
 from discord import app_commands
-
+from discord.utils import get
 import os
 import responses
 
@@ -12,7 +12,17 @@ async def send_message(message,user_message,is_private):
             await message.author.send(response) if is_private else await message.channel.send(response)
     except Exception as e:
         print(e)
-
+        
+async def addRemoveSink(message, user : discord.Member):
+  role = get(user.server.roles, name="sink")
+  if role.position > user.top_role.position: #if the role is above users top role it sends error
+    return await message.author.send('**:x: | That role is above your top role!**') 
+  if role in user.roles:
+      await user.remove_roles(role) #removes the role if user already has
+      await message.author.send(f"Removed {role} from {user.mention}")
+  else:
+      await user.add_roles(role) #adds role if not already has it
+      await message.author.send(f"Added {role} to {user.mention}") 
 
 def run_discord_bot():
     
@@ -47,6 +57,8 @@ def run_discord_bot():
             
             return
         # print(f"{username} said: '{user_message}' ({channel})")
+        elif user_message == "?sink":
+            await addRemoveSink(message,message.author)
         elif user_message[0] == '?':
             user_message=user_message[1:]
             await send_message(message,user_message,is_private=True)
