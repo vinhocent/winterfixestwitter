@@ -20,4 +20,5 @@ def handle_response(message, author) -> str:
 
     if message == "!saranghae":
         return "Saranghae!"
-
+    if "huzaifa" in message.lower() or "huz" in message.lower():
+        return "rest in peace"
