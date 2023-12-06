@@ -10,9 +10,9 @@ def handle_response(message, author) -> str:
         reply = message.replace('https://twitter.com', 'https://fxtwitter.com')
         return author.mention+ ": " + reply
     
-    if 'https://instagram.com/' in message:
+    if 'instagram.com/' in message:
         # tweet = re.search("(?P<url>https?://[^\s]+)", p_message).group("url")
-        reply = message.replace('https://instagram.com', 'https://ddinstagram.com')
+        reply = message.replace('instagram.com', 'ddinstagram.com')
         return author.mention+ ": " + reply
     if message == "!winter":
         return "I'm Winter byum blum buh"
