@@ -8,9 +8,7 @@ async def send_message(message,user_message,is_private):
     try:
         response = responses.handle_response(user_message,message.author)
         if (response == "rest in peace"):
-            await message.channel.send(response)
-        
-
+            await message.author.send(response) if is_private else await message.channel.send(response)
         elif (response != None):
             await message.delete()
             await message.author.send(response) if is_private else await message.channel.send(response)
