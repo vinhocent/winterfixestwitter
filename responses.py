@@ -14,7 +14,12 @@ def handle_response(message, author) -> str:
         # tweet = re.search("(?P<url>https?://[^\s]+)", p_message).group("url")
         reply = message.replace('instagram.com', 'ddinstagram.com')
         return author.mention+ ": " + reply
+
     if message == "!winter":
         return "I'm Winter byum blum buh"
+
     if message == "!saranghae":
         return "Saranghae!"
+
+    if 'huzaifa' in message or 'huz' in message:
+        return "rest in peace"
