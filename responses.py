@@ -19,6 +19,12 @@ def handle_response(message, author) -> str:
     if 'tiktok.com/' in message:
         reply = message.replace('tiktok.com', 'vxtiktok.com')
         return author.mention+ ": " + reply
+
+
+
+    if 'pixiv.net/' in message:
+        reply = message.replace('pixiv.net', 'phixiv.net')
+        return author.mention+ ": " + reply
     if message == "!winter":
         return "I'm Winter byum blum buh"
 
