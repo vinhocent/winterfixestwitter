@@ -1,5 +1,9 @@
 import re
 
+import psycogpg2
+
+
+
 urlReplaceDict = {
     "https://x.com/": "https://fxtwitter.com/",
     "https://twitter.com/": "https://fxtwitter.com/",
@@ -9,29 +13,6 @@ urlReplaceDict = {
 }
 
 def handle_response(message, author) -> str:
-    # if 'https://x.com/' in message:
-    #     reply = message.replace('https://x.com', 'https://fxtwitter.com')
-    #     return author.mention+ ": " + reply
-    #
-    # if 'https://twitter.com/' in message:
-    #     reply = message.replace('https://twitter.com', 'https://fxtwitter.com')
-    #     return author.mention+ ": " + reply
-    #
-    # if 'instagram.com/' in message:
-    #     # tweet = re.search("(?P<url>https?://[^\s]+)", p_message).group("url")
-    #     reply = message.replace('instagram.com', 'ddinstagram.com')
-    #     return author.mention+ ": " + reply
-    #
-    #
-    # if 'tiktok.com/' in message:
-    #     reply = message.replace('tiktok.com', 'vxtiktok.com')
-    #     return author.mention+ ": " + reply
-    #
-    #
-    #
-    # if 'pixiv.net/' in message:
-    #     reply = message.replace('pixiv.net', 'phixiv.net')
-    #     return author.mention+ ": " + reply
     for originalUrl in urlReplaceDict:
         if originalUrl in message:
             reply = message.replace(originalUrl, urlReplaceDict[originalUrl])  
@@ -39,8 +20,27 @@ def handle_response(message, author) -> str:
 
     if message == "!winter":
         return "I'm Winter byum blum buh"
-
     if message == "!saranghae":
         return "Saranghae!"
     if "huzaifa" in message.lower() or "huz" in message.lower():
         return "rest in peace"
+
+    if message = "!startdb":
+        DATABASE_URL = os.environ['DATABASE_URL']
+
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
+        cur = conn.cursor()
+
+        cur.execute("""CREATE TABLE IF NOT EXISTS 
+            msg(
+                chat TEXT,
+                sender TEXT
+            );
+        """)
+
+        conn.commit()
+
+        cur.close()
+        conn.close()
+
