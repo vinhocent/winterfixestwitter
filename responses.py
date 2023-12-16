@@ -1,7 +1,6 @@
 import re
 
-import psycogpg2
-
+import psycopg2
 
 
 urlReplaceDict = {
