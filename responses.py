@@ -24,7 +24,8 @@ def handle_response(message, author) -> str:
     if "huzaifa" in message.lower() or "huz" in message.lower():
         return "rest in peace"
 
-    if message == "!startdb":
+    if "Connections
+        Puzzle #" in message:
         DATABASE_URL = os.environ['DATABASE_URL']
 
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
@@ -38,6 +39,9 @@ def handle_response(message, author) -> str:
             );
         """)
 
+        sql = "INSERT INTO msg (chat, sender) VALUES (%s, %s)"
+        val = (message, author.name)
+        cur.execute(sql,val)
         conn.commit()
 
         cur.close()
