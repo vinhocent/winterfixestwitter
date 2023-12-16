@@ -1,12 +1,12 @@
 import re
 
-urlReplaceDict = [
-    "x.com/": "fxtwitter.com/",
-    "twitter.com/": "fxtwitter.com/",
-    "instagram.com/": "ddinstagram.com/"
-    "tiktok.com/": "vxtiktok.com/"
-    "pixiv.net/": "phixiv.net/"
-]
+urlReplaceDict = {
+    "https://x.com/": "https://fxtwitter.com/",
+    "https://xwitter.com/": "https://fxtwitter.com/",
+    "https://xnstagram.com/": "https://ddinstagram.com/"
+    "https://xiktok.com/": "https://vxtiktok.com/"
+    "https://xpixiv.net/": "https://phixiv.net/"
+}
 
 def handle_response(message, author) -> str:
     # if 'https://x.com/' in message:
