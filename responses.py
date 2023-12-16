@@ -35,7 +35,7 @@ def handle_response(message, author) -> str:
             msg(
                 chat TEXT,
                 sender TEXT,
-                userName TEXT,
+                userName TEXT
             );
         """)
 
