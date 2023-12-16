@@ -2,10 +2,10 @@ import re
 
 urlReplaceDict = {
     "https://x.com/": "https://fxtwitter.com/",
-    "https://xwitter.com/": "https://fxtwitter.com/",
-    "https://xnstagram.com/": "https://ddinstagram.com/"
-    "https://xiktok.com/": "https://vxtiktok.com/"
-    "https://xpixiv.net/": "https://phixiv.net/"
+    "https://twitter.com/": "https://fxtwitter.com/",
+    "https://instagram.com/": "https://ddinstagram.com/",
+    "https://tiktok.com/": "https://vxtiktok.com/",
+    "https://pixiv.net/": "https://phixiv.net/"
 }
 
 def handle_response(message, author) -> str:
