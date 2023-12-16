@@ -39,7 +39,7 @@ def handle_response(message, author) -> str:
             );
         """)
 
-        sql = "INSERT INTO msg (chat, sender) VALUES (%s, %s)"
+        sql = "INSERT INTO msg (chat, sender) VALUES (%s, %s, %s)"
         val = (message, author.mention, author.name)
         cur.execute(sql,val)
         conn.commit()
