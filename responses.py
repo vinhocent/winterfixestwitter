@@ -24,8 +24,7 @@ def handle_response(message, author) -> str:
     if "huzaifa" in message.lower() or "huz" in message.lower():
         return "rest in peace"
 
-    if "Connections
-        Puzzle #" in message:
+    if "Connections \nPuzzle #" in message:
         DATABASE_URL = os.environ['DATABASE_URL']
 
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
