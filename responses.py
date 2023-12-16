@@ -34,12 +34,13 @@ def handle_response(message, author) -> str:
         cur.execute("""CREATE TABLE IF NOT EXISTS 
             msg(
                 chat TEXT,
-                sender TEXT
+                sender TEXT,
+                userName TEXT,
             );
         """)
 
         sql = "INSERT INTO msg (chat, sender) VALUES (%s, %s)"
-        val = (message, author.name)
+        val = (message, author.mention, author.name)
         cur.execute(sql,val)
         conn.commit()
 
