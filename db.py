@@ -14,7 +14,7 @@ def db_create() -> None:
             chat TEXT,
             sender TEXT,
             userName TEXT,
-            puzzNum INT,
+            puzzNum INT
         );
     """)
     cur.execute("""CREATE TABLE IF NOT EXISTS 
