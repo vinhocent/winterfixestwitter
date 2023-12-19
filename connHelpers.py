@@ -33,3 +33,13 @@ def getStats(message):
     lines = lines[2:]
 
     return isPerfect(lines), isFail(lines), isClutch(lines), isWin(lines)
+
+
+def printStats(mention, totalPerfect, totalFails, totalClutches, totalWins):
+    return (
+        f"**{mention} STATS:**\n"
+        f"All Time Perfects: {totalPerfect}\n"
+        f"All Time Fails: {totalFails}\n"
+        f"All Time Clutches: {totalClutches}\n"
+        f"All Time Wins: {totalWins}\n"
+    )
