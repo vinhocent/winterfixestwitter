@@ -3,6 +3,7 @@ import psycopg2
 import db
 from typing import Optional
 import connHelpers
+import random
 
 urlReplaceDict = {
     "x.com/": "fxtwitter.com/",
@@ -10,6 +11,20 @@ urlReplaceDict = {
     "instagram.com/": "ddinstagram.com/",
     "tiktok.com/": "vxtiktok.com/",
     "pixiv.net/": "phixiv.net/"
+}
+
+kaomojiDict = {
+    1: "(◕‿◕✿)", 
+    2: "(✿╹◡╹)",
+    3: "(◕ᴥ◕)",
+    4: "(´｡• ᵕ •｡`) ♡",
+    5: "♡＼(￣▽￣)／♡",
+    6: "(o^▽^o)",
+    7: "٩(◕‿◕｡)۶",
+    8: "o(>ω<)o",
+    9: "\(★ω★)/",
+    10: "(☆ω☆)"
+
 }
 
 def handle_response(message, author):
@@ -40,7 +55,8 @@ def handle_response(message, author):
             return "NT doglet " + author.mention, False
 
         if (isPerfect):
-            return "WOW PERFECT ^w^, GOOD JOB " + author.mention, False
+            randomEmoji = random.randint(1,len(kaomojiDict))
+            return f"WOW PERFECT + {kaomojiDict[randomEmoji]}, GOOD JOB " + author.mention, False
 
         if (isClutch):
             return ("Whew, you clutched up! " + author.mention ) , False
