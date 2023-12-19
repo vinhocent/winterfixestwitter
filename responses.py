@@ -1,7 +1,7 @@
-import re
 import os
 import psycopg2
-
+import db
+from typing import Optional
 
 urlReplaceDict = {
     "https://x.com/": "https://fxtwitter.com/",
@@ -11,7 +11,7 @@ urlReplaceDict = {
     "https://pixiv.net/": "https://phixiv.net/"
 }
 
-def handle_response(message, author) -> str:
+def handle_response(message, author) -> Optional[str]:
     for originalUrl in urlReplaceDict:
         if originalUrl in message:
             reply = message.replace(originalUrl, urlReplaceDict[originalUrl])  
@@ -25,25 +25,9 @@ def handle_response(message, author) -> str:
         return "rest in peace"
 
     if "Connections \nPuzzle #" in message:
-        DATABASE_URL = os.environ['DATABASE_URL']
+        
+        db.db_create()
+        puzzNum = db.dbinsertConnMsg(message,author)
+        
 
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
-        cur = conn.cursor()
-
-        cur.execute("""CREATE TABLE IF NOT EXISTS 
-            msg(
-                chat TEXT,
-                sender TEXT,
-                userName TEXT
-            );
-        """)
-
-        sql = "INSERT INTO msg (chat, sender, userName) VALUES (%s, %s, %s)"
-        val = (message, author.mention, author.name)
-        cur.execute(sql,val)
-        conn.commit()
-
-        cur.close()
-        conn.close()
-
+        return
