@@ -18,12 +18,12 @@ def db_create() -> None:
     """)
     cur.execute("""CREATE TABLE IF NOT EXISTS 
         metadata(
-            currentConnections INT(255),
+            currentConnection INT(255)
         );
     """)
     
 
-    conn.close()
+    cur.close()
 
     conn.close()
 
