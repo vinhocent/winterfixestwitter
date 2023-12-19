@@ -40,7 +40,7 @@ def run_discord_bot():
         await interaction.response.send_message("Hello!")
     @tree.command(name = "connectstats", description = "Get your connections Stats!", guild=discord.Object(id=691001945447596114))   
     async def getConnStats(interaction):
-        await asyncio.sleep(4) 
+        # await asyncio.sleep(4) 
         response,needDelete = responses.handle_response("!connStats",interaction.user)
         await interaction.response.send_message(response)
 
