@@ -37,7 +37,7 @@ def handle_response(message, author):
 
 
         if (isFail):
-            return "NT " + author.mention, False
+            return "NT doglet " + author.mention, False
 
         if (isPerfect):
             return "WOW PERFECT ^w^, GOOD JOB " + author.mention, False
