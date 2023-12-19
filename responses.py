@@ -56,7 +56,7 @@ def handle_response(message, author):
 
         if (isPerfect):
             randomEmoji = random.randint(1,len(kaomojiDict))
-            return f"WOW PERFECT + {kaomojiDict[randomEmoji]}, GOOD JOB " + author.mention, False
+            return f"WOW PERFECT {kaomojiDict[randomEmoji]}, GOOD JOB " + author.mention, False
 
         if (isClutch):
             return ("Whew, you clutched up! " + author.mention ) , False
