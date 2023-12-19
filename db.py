@@ -13,12 +13,13 @@ def db_create() -> None:
         msg(
             chat TEXT,
             sender TEXT,
-            userName TEXT
+            userName TEXT,
+            puzzNum INT,
         );
     """)
     cur.execute("""CREATE TABLE IF NOT EXISTS 
         metadata(
-            currentConnection INT(255)
+            currentConnection INT
         );
     """)
     
