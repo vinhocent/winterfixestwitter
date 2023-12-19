@@ -38,7 +38,7 @@ def run_discord_bot():
     @tree.command(name = "commandname", description = "My first application Command", guild=discord.Object(id=745870568762638338)) #Add the guild ids in which the slash command will appear. If it should be in all, remove the argument, but note that it will take some time (up to an hour) to register the command if it's for all guilds.
     async def first_command(interaction):
         await interaction.response.send_message("Hello!")
-    @tree.command(name = "connectstats", description = "Get your connections Stats!")   
+    @tree.command(name = "connectstats", description = "Get your connections Stats!", guild=discord.Object(id=691001945447596114))   
     async def getConnStats(interaction):
         await asyncio.sleep(4) 
         response,needDelete = responses.handle_response("!connStats",interaction.user)
@@ -56,8 +56,9 @@ def run_discord_bot():
     async def on_ready():
         print(f'{client.user} is now running!')
         await client.change_presence(activity=discord.Streaming(name='Aespa - Drama', url='https://www.twitch.tv/tenz'))
-        print("Ready!")
+        
         await tree.sync(guild=discord.Object(id=745870568762638338))
+        print("Ready!")
 
 
 
