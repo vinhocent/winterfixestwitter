@@ -37,13 +37,25 @@ def run_discord_bot():
     @tree.command(name = "commandname", description = "My first application Command", guild=discord.Object(id=745870568762638338)) #Add the guild ids in which the slash command will appear. If it should be in all, remove the argument, but note that it will take some time (up to an hour) to register the command if it's for all guilds.
     async def first_command(interaction):
         await interaction.response.send_message("Hello!")
+    @tree.command(name = "connectionsStats", description = "Get your connections Stats!")   
+    async def getConnStats(interaction):
+        
+        response,needDelete = responses.handle_response("!connStats",interaction.user)
+        await interaction.response.send_message(response)
+
+    @tree.command(name='sync', description='Owner only')
+    async def sync(interaction: discord.Interaction):
+        if interaction.user.id == 96435974011105280:
+            await tree.sync()
+            print('Command tree synced.')
+        else:
+            await interaction.response.send_message('You must be the owner to use this command!')
 
     @client.event
     async def on_ready():
         print(f'{client.user} is now running!')
         # await client.change_presence(activity=discord.Activity(type=discord.ActivityType.streaming, name="Aespa - Drama", url = "https://open.spotify.com/track/5XWlyfo0kZ8LF7VSyfS4Ew?si=b686e4664c5c432a"))
         await client.change_presence(activity=discord.Streaming(name='Aespa - Drama', url='https://www.twitch.tv/tenz'))
-        await tree.sync(guild=discord.Object(id=745870568762638338))
         print("Ready!")
 
 
