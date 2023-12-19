@@ -54,9 +54,9 @@ def run_discord_bot():
     @client.event
     async def on_ready():
         print(f'{client.user} is now running!')
-        # await client.change_presence(activity=discord.Activity(type=discord.ActivityType.streaming, name="Aespa - Drama", url = "https://open.spotify.com/track/5XWlyfo0kZ8LF7VSyfS4Ew?si=b686e4664c5c432a"))
         await client.change_presence(activity=discord.Streaming(name='Aespa - Drama', url='https://www.twitch.tv/tenz'))
         print("Ready!")
+        await tree.sync(guild=discord.Object(id=745870568762638338))
 
 
 
