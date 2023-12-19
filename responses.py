@@ -41,7 +41,7 @@ def handle_response(message, author):
         return "rest in peace" , False
     if "!connStats" == message:
         allClutch, allPerfect, allFail , allWin = db.viewStats(author)
-        return connHelpers.printStats(author.mention, allPerfect, allFail, allClutch, allWin)
+        return connHelpers.printStats(author.mention, allPerfect, allFail, allClutch, allWin), True
     if "Connections \nPuzzle #" in message:
         
         db.db_create()

@@ -96,10 +96,11 @@ def viewStats(author):
     cur = conn.cursor()
     cur.execute("SELECT * FROM userStats WHERE userMention = %s", (author.mention,))
     user_stats = cur.fetchone()
-    print(user_stats)
     conn.commit()
     cur.close()
     conn.close()
-    return user_stats[2] , user_stats[3], user_stats[4], user_stats[5]
+    if user_stats:
+        return user_stats[2] , user_stats[3], user_stats[4], user_stats[5]
     
+    return None
 
