@@ -2,6 +2,7 @@ import os
 import psycopg2
 import db
 from typing import Optional
+import connHelpers
 
 urlReplaceDict = {
     "https://x.com/": "https://fxtwitter.com/",
@@ -11,23 +12,37 @@ urlReplaceDict = {
     "https://pixiv.net/": "https://phixiv.net/"
 }
 
-def handle_response(message, author) -> Optional[str]:
+def handle_response(message, author):
     for originalUrl in urlReplaceDict:
         if originalUrl in message:
             reply = message.replace(originalUrl, urlReplaceDict[originalUrl])  
-            return author.mention+ ": " + reply
+            return author.mention+ ": " + reply , True
 
     if message == "!winter":
-        return "I'm Winter byum blum buh"
+        return "I'm Winter byum blum buh" , True
     if message == "!saranghae":
-        return "Saranghae!"
+        return "Saranghae!", True
     if "huzaifa" in message.lower() or "huz" in message.lower():
-        return "rest in peace"
-
+        return "rest in peace" , False
+    if "!connStats" == message:
+        allClutch, allPerfect, allFail , allWin = db.viewStats(author)
+        return author.mention + " STATS : " + str(allClutch) + str(allPerfect) + str(allFail) + str(allWin) , False
     if "Connections \nPuzzle #" in message:
         
         db.db_create()
         puzzNum = db.dbinsertConnMsg(message,author)
-        
+        db.dbUpdateCurrent(puzzNum)
+        isPerfect, isFail, isClutch, isWin = connHelpers.getStats(message)
+        db.dbUpdateStats(author, isPerfect,isFail, isClutch, isWin)
 
-        return
+
+        if (isFail):
+            return "NT " + author.mention, False
+
+        if (isPerfect):
+            return "WOW PERFECT ^w^, GOOD JOB " + author.mention, False
+
+        if (isClutch):
+            return ("Whew, you clutched up! " + author.mention ) , False
+
+    return None, False
