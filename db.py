@@ -100,8 +100,6 @@ def viewStats(author):
     conn.commit()
     cur.close()
     conn.close()
-    if user_stats:
-        return user_stats[2] , user_stats[3], user_stats[4], user_stats[5]
+    return user_stats[2] , user_stats[3], user_stats[4], user_stats[5]
     
-    return None
 
