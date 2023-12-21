@@ -57,6 +57,7 @@ def run_discord_bot():
         
         await tree.sync(guild=discord.Object(id=691001945447596114))
 
+        await tree.sync(guild=discord.Object(id=1050941726283534438))
         await client.change_presence(activity=discord.Streaming(name='Aespa - Drama', url='https://www.twitch.tv/tenz'))
         
         print("Ready!")
