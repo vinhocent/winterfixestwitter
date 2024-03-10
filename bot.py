@@ -38,10 +38,10 @@ def run_discord_bot():
     @tree.command(name = "commandname", description = "My first application Command", guild=discord.Object(id=745870568762638338)) #Add the guild ids in which the slash command will appear. If it should be in all, remove the argument, but note that it will take some time (up to an hour) to register the command if it's for all guilds.
     async def first_command(interaction):
         await interaction.response.send_message("Hello!")
-    @tree.command(name = "connectstats", description = "Get your connections Stats!", guilds=[discord.Object(id=691001945447596114), discord.Object(id = 1050941726283534438)])   
-    async def getConnStats(interaction):
-        response,needDelete = responses.handle_response("!connStats",interaction.user)
-        await interaction.response.send_message(response)
+    # @tree.command(name = "connectstats", description = "Get your connections Stats!", guilds=[discord.Object(id=691001945447596114), discord.Object(id = 1050941726283534438)])   
+    # async def getConnStats(interaction):
+    #     response,needDelete = responses.handle_response("!connStats",interaction.user)
+    #     await interaction.response.send_message(response)
 
     @tree.command(name='sync', description='Owner only')
     async def sync(interaction: discord.Interaction):
