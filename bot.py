@@ -7,10 +7,12 @@ import asyncio
 async def send_message(message,user_message,is_private):
     try:
         response,needDelete = responses.handle_response(user_message,message.author)
-        if not needDelete and response != None and message.reference.fail_if_not_exists:
-            await message.channel.send("yomomma")
-        elif not needDelete and response != None: 
+
+        if not needDelete and response != None: 
             await message.author.send(response) if is_private else await message.channel.send(response)
+        if response != None and message.reference.fail_if_not_exists:
+            repliedMessage = await message.channel.fetch_message(message.reference.message_id)
+            message.channel.send(repliedMessage.content)
         elif response != None:
             await message.delete()
             await message.author.send(response) if is_private else await message.channel.send(response)
