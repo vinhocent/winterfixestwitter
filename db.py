@@ -1,7 +1,7 @@
 import psycopg2
 import os
 import re
-DATABASE_URL = os.environ['DATABASE_URL']
+# DATABASE_URL = os.environ['DATABASE_URL']
 
 def db_create() -> None:
 

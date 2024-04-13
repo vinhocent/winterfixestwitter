@@ -44,11 +44,11 @@ def handle_response(message, author):
         return connHelpers.printStats(author.mention, allPerfect, allFail, allClutch, allWin), True
     if "Connections \nPuzzle #" in message:
         
-        db.db_create()
-        puzzNum = db.dbinsertConnMsg(message,author)
-        db.dbUpdateCurrent(puzzNum)
+        # db.db_create()
+        # puzzNum = db.dbinsertConnMsg(message,author)
+        # db.dbUpdateCurrent(puzzNum)
         isPerfect, isFail, isClutch, isWin = connHelpers.getStats(message)
-        db.dbUpdateStats(author, isPerfect,isFail, isClutch, isWin)
+        # db.dbUpdateStats(author, isPerfect,isFail, isClutch, isWin)
 
 
         if (isFail):
