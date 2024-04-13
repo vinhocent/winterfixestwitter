@@ -10,7 +10,7 @@ async def send_message(message,user_message,is_private):
 
         if not needDelete and response != None: 
             await message.author.send(response) if is_private else await message.channel.send(response)
-        if response != None and message.reference.fail_if_not_exists:
+        if response != None and message.reference.fail_if_not_exists != None:
             repliedMessage = await message.channel.fetch_message(message.reference.message_id)
             await message.delete()
             await repliedMessage.reply(response, mention_author=True)
