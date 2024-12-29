@@ -8,7 +8,7 @@ import random
 urlReplaceDict = {
     "https://x.com/": "https://fixupx.com/",
     "https://twitter.com/": "https://fixup.com/",
-    "https://instagram.com/": "https://ddinstagram.com/",
+    "instagram.com/": "https://ddinstagram.com/",
     "https://tiktok.com/": "https://vxtiktok.com/",
     "https://pixiv.net/": "https://phixiv.net/"
 }
