@@ -6,11 +6,11 @@ import connHelpers
 import random
 
 urlReplaceDict = {
-    "https://x.com/": "https://fixupx.com/",
-    "https://twitter.com/": "https://fixup.com/",
-    "https://instagram.com/": "https://vxinstagram.com/",
-    "https://tiktok.com/": "https://vxtiktok.com/",
-    "https://pixiv.net/": "https://phixiv.net/"
+    "x.com": "fixupx.com",
+    "twitter.com": "fixup.com",
+    "instagram.com": "vxinstagram.com",
+    "tiktok.com": "vxtiktok.com",
+    "pixiv.net": "phixiv.net"
 }
 
 kaomojiDict = {
